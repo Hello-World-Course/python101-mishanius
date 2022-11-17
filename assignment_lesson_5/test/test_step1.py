@@ -13,6 +13,6 @@ class TestUi(unittest.TestCase):
         self.assertEqual(mock_input.call_args_list[1].args[0], "Michael, please choose board size:")
         self.assertEqual(mock_input.call_args_list[2].args[0],
                          "Michael, for board size 9, choose number of mines to allocate:")
-        self.assertEqual(test_file.name, 'Michael')
+        self.assertEqual(test_file.player_name, 'Michael')
         self.assertEqual(test_file.board_size, 9)
         self.assertEqual(test_file.number_of_mines, 3)
