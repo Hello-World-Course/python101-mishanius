@@ -29,7 +29,7 @@ class TestUi(unittest.TestCase):
     def test_number_of_mines(self, *args):
         import project.ui.user_interaction as test_file
         self.assertEqual(test_file.is_number_of_mines_valid(0, 5), False)
-        self.assertEqual(test_file.is_number_of_mines_valid(13, 5), True)
+        self.assertEqual(test_file.is_number_of_mines_valid(13, 5), False)
         self.assertEqual(test_file.is_number_of_mines_valid(7, 5), True)
 
     @mock.patch('sys.stdout', new_callable=io.StringIO)
