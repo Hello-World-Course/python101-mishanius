@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 import json
+=======
+>>>>>>> origin/assignment_lesson_12
 import sys
 import unittest
 from unittest import mock
