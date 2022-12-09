@@ -8,3 +8,6 @@ def safe_set_value(x, y, value, board):
         return True
     else:
         return False
+
+def create_empty_board(board_size):
+    return [[None]*board_size for _ in range(board_size)]

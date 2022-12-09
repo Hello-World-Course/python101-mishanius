@@ -1,3 +1,4 @@
+import json
 import sys
 import unittest
 from unittest import mock
@@ -12,17 +13,32 @@ class TestLesson(unittest.TestCase):
         except KeyError:
             pass
 
+    def assertFunctionCall(self, file, functionName, args, expectedResult):
+        message = {
+            "functionName": functionName,
+            "file": file.__name__,
+            "args": args,
+            "expectedResult": str(expectedResult),
+            "realResult": None,
+            "exception": None
+        }
+        real_result = None
+        try:
+            real_result = getattr(file, functionName)(*args)
+            message["realResult"] = str(real_result)
+        except Exception as e:
+            message["exception"] = str(e)
+        self.assertEqual(expectedResult, real_result, msg=f"@@@PREFIX@@@{json.dumps(message)}@@@SUFFIX@@@")
+
     @mock.patch('builtins.input', side_effect=["i" for _ in range(1000)])
     def test_board_functions_create_empty_board(self, *args):
         import project.game.board_functions as board_functions
-        board = board_functions.create_empty_board(2, None)
-        self.assertEqual(board, [[None for _ in range(2)] for _ in range(2)])
+        self.assertFunctionCall(board_functions, "create_empty_board", [2], [[1 for _ in range(2)] for _ in range(2)])
 
     @mock.patch('builtins.input', side_effect=['Dan', '9', '40'])
     def test_coordinate_conversion(self, *args):
         import project.ui.board_ui as test_file
-        self.assertEqual(test_file.convert_coords("23A"), (22, 0))
-        self.assertEqual(test_file.convert_coords("4D"), (3, 3))
+        self.assertFunctionCall(test_file, "convert_coords", ["23A"], (21, 0))
 
     @mock.patch('builtins.input', side_effect=["i" for _ in range(1000)])
     def test_board_functions_draw_board(self, *args):
