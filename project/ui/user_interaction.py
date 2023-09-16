@@ -18,6 +18,6 @@ if not error:
     if not 0 < number_of_mines < 10:
         number_of_mines = None
         error = True
-        print(f"{name} you entered illegal number osf mines")
+        print(f"{name} you entered illegal number of mines")
 if not error:
     print(f"{name} the board size is: {board_size}, number of mines is: {number_of_mines}. ENJOY!")
