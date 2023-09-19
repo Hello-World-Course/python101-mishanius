@@ -7,7 +7,7 @@ def is_board_size_valid(board_size):
 
 
 def is_number_of_mines_valid(board_size, number_of_mines):
-    return 0 < number_of_mines < board_size * board_size
+    return 0 < number_of_mines < 0.5*board_size * board_size
 
 
 def register_user():
