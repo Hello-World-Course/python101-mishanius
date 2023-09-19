@@ -17,6 +17,7 @@ class TestUi(AssignmentTester):
     @mock.patch('builtins.input', side_effect=['Dan', '9', '40'])
     def test_1_name(self, mock_input, message):
         # test
+        ######
         import project.ui.user_interaction as user_interaction
         expected_result = True
         real_result = user_interaction.is_name_valid('Alon')
@@ -28,6 +29,7 @@ class TestUi(AssignmentTester):
     @mock.patch('builtins.input', side_effect=['Dan', '9', '40'])
     def test_1_name_2(self, mock_input, message):
         # test
+        ######
         import project.ui.user_interaction as user_interaction
         expected_result = False
         real_result = user_interaction.is_name_valid('A')
@@ -39,6 +41,7 @@ class TestUi(AssignmentTester):
     @mock.patch('builtins.input', side_effect=['Dan', '9', '40'])
     def test_1_name_3(self, mock_input, message):
         # test
+        ######
         import project.ui.user_interaction as user_interaction
         expected_result = False
         real_result = user_interaction.is_name_valid('')
@@ -50,6 +53,7 @@ class TestUi(AssignmentTester):
     @mock.patch('builtins.input', side_effect=['Dan', '9', '40'])
     def test_2_board_size_1(self, mock_input, message):
         # test
+        ######
         import project.ui.user_interaction as user_interaction
         expected_result = False
         real_result = user_interaction.is_board_size_valid(0)
@@ -61,6 +65,7 @@ class TestUi(AssignmentTester):
     @mock.patch('builtins.input', side_effect=['Dan', '9', '40'])
     def test_2_board_size_2(self, mock_input, message):
         # test
+        ######
         import project.ui.user_interaction as user_interaction
         expected_result = False
         real_result = user_interaction.is_board_size_valid(-1)
@@ -72,6 +77,7 @@ class TestUi(AssignmentTester):
     @mock.patch('builtins.input', side_effect=['Dan', '9', '40'])
     def test_2_board_size_3(self, mock_input, message):
         # test
+        ######
         import project.ui.user_interaction as user_interaction
         expected_result = True
         real_result = user_interaction.is_board_size_valid(7)
@@ -83,6 +89,7 @@ class TestUi(AssignmentTester):
     @mock.patch('builtins.input', side_effect=['Dan', '9', '40'])
     def test_3_number_of_mines_1(self,mock_input, message):
         # test
+        ######
         import project.ui.user_interaction as user_interaction
         expected_result = False
         real_result = user_interaction.is_number_of_mines_valid(0, 5)
@@ -94,6 +101,7 @@ class TestUi(AssignmentTester):
     @mock.patch('builtins.input', side_effect=['Dan', '9', '40'])
     def test_3_number_of_mines_2(self, mock_input, message):
         # test
+        ######
         import project.ui.user_interaction as user_interaction
         expected_result = False
         real_result = user_interaction.is_number_of_mines_valid(13, 5)
@@ -105,6 +113,7 @@ class TestUi(AssignmentTester):
     @mock.patch('builtins.input', side_effect=['Dan', '9', '40'])
     def test_3_number_of_mines_3(self, mock_input, message):
         # test
+        ######
         import project.ui.user_interaction as user_interaction
         expected_result = True
         real_result = user_interaction.is_number_of_mines_valid(7, 5)
@@ -117,6 +126,7 @@ class TestUi(AssignmentTester):
     @mock.patch('builtins.input', side_effect=['Dan', '9', '40'])
     def test_full_interaction(self, mock_input, mock_stdout, message):
         # test
+        ######
         import project.ui.user_interaction as user_interaction
 
         expected_result = ('Dan', 9, 40)
