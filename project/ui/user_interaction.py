@@ -3,11 +3,11 @@ def is_name_valid(name):
 
 
 def is_board_size_valid(board_size):
-    return True
+    return 0 < board_size < 26
 
 
 def is_number_of_mines_valid(board_size, number_of_mines):
-    return True
+    return 0 < number_of_mines < board_size * board_size
 
 
 def register_user():
