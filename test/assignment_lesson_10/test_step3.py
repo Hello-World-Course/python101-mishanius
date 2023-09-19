@@ -92,7 +92,7 @@ class TestUi(AssignmentTester):
         ######
         import project.ui.user_interaction as user_interaction
         expected_result = False
-        real_result = user_interaction.is_number_of_mines_valid(0, 5)
+        real_result = user_interaction.is_number_of_mines_valid(5, 0)
         # verify
         message.explanation = {'value': 'CODE_MISMATCH'}
         self.assertEqualWithMessage(real_result, expected_result, msg=message)
@@ -104,7 +104,7 @@ class TestUi(AssignmentTester):
         ######
         import project.ui.user_interaction as user_interaction
         expected_result = False
-        real_result = user_interaction.is_number_of_mines_valid(13, 5)
+        real_result = user_interaction.is_number_of_mines_valid(5, 13)
         # verify
         message.explanation = {'value': 'CODE_MISMATCH'}
         self.assertEqualWithMessage(real_result, expected_result, msg=message)
@@ -116,7 +116,7 @@ class TestUi(AssignmentTester):
         ######
         import project.ui.user_interaction as user_interaction
         expected_result = True
-        real_result = user_interaction.is_number_of_mines_valid(7, 5)
+        real_result = user_interaction.is_number_of_mines_valid(5, 7)
         # verify
         message.explanation = {'value': 'CODE_MISMATCH'}
         self.assertEqualWithMessage(real_result, expected_result, msg=message)
