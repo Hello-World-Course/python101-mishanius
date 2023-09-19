@@ -6,7 +6,7 @@ from test_base.test_base import AssignmentTester
 from test_base.test_decorator import devin_test_decorator
 
 
-class TestUi(AssignmentTester):
+class TestStep3(AssignmentTester):
     def tearDown(self):
         try:
             del sys.modules['project.ui.user_interaction']
