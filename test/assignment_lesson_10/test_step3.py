@@ -21,7 +21,7 @@ class TestUi(AssignmentTester):
         expected_result = True
         real_result = user_interaction.is_name_valid('Alon')
         # verify
-        message.explanation = {'value': 'INPUT_REQUEST_MISMATCH', 'params': {'order': 0}}
+        message.explanation = {'value': 'MISMATCH'}
         self.assertEqualWithMessage(real_result, expected_result, msg=message)
 
     @devin_test_decorator
@@ -32,7 +32,7 @@ class TestUi(AssignmentTester):
         expected_result = False
         real_result = user_interaction.is_name_valid('A')
         # verify
-        message.explanation = {'value': 'INPUT_REQUEST_MISMATCH', 'params': {'order': 1}}
+        message.explanation = {'value': 'MISMATCH'}
         self.assertEqualWithMessage(real_result, expected_result, msg=message)
 
     @devin_test_decorator
@@ -43,7 +43,7 @@ class TestUi(AssignmentTester):
         expected_result = False
         real_result = user_interaction.is_name_valid('')
         # verify
-        message.explanation = {'value': 'INPUT_REQUEST_MISMATCH', 'params': {'order': 2}}
+        message.explanation = {'value': 'MISMATCH'}
         self.assertEqualWithMessage(real_result, expected_result, msg=message)
 
     @devin_test_decorator
@@ -54,7 +54,7 @@ class TestUi(AssignmentTester):
         expected_result = False
         real_result = user_interaction.is_board_size_valid(0)
         # verify
-        message.explanation = {'value': 'INPUT_REQUEST_MISMATCH', 'params': {'order': 0}}
+        message.explanation = {'value': 'MISMATCH'}
         self.assertEqualWithMessage(real_result, expected_result, msg=message)
 
     @devin_test_decorator
@@ -65,7 +65,7 @@ class TestUi(AssignmentTester):
         expected_result = False
         real_result = user_interaction.is_board_size_valid(-1)
         # verify
-        message.explanation = {'value': 'INPUT_REQUEST_MISMATCH', 'params': {'order': 1}}
+        message.explanation = {'value': 'MISMATCH'}
         self.assertEqualWithMessage(real_result, expected_result, msg=message)
 
     @devin_test_decorator
@@ -76,7 +76,7 @@ class TestUi(AssignmentTester):
         expected_result = True
         real_result = user_interaction.is_board_size_valid(7)
         # verify
-        message.explanation = {'value': 'INPUT_REQUEST_MISMATCH', 'params': {'order': 2}}
+        message.explanation = {'value': 'MISMATCH'}
         self.assertEqualWithMessage(real_result, expected_result, msg=message)
 
     @devin_test_decorator
@@ -87,7 +87,7 @@ class TestUi(AssignmentTester):
         expected_result = False
         real_result = user_interaction.is_number_of_mines_valid(0, 5)
         # verify
-        message.explanation = {'value': 'INPUT_REQUEST_MISMATCH', 'params': {'order': 0}}
+        message.explanation = {'value': 'MISMATCH'}
         self.assertEqualWithMessage(real_result, expected_result, msg=message)
 
     @devin_test_decorator
@@ -98,7 +98,7 @@ class TestUi(AssignmentTester):
         expected_result = False
         real_result = user_interaction.is_number_of_mines_valid(13, 5)
         # verify
-        message.explanation = {'value': 'INPUT_REQUEST_MISMATCH', 'params': {'order': 1}}
+        message.explanation = {'value': 'MISMATCH'}
         self.assertEqualWithMessage(real_result, expected_result, msg=message)
 
     @devin_test_decorator
@@ -109,7 +109,7 @@ class TestUi(AssignmentTester):
         expected_result = True
         real_result = user_interaction.is_number_of_mines_valid(7, 5)
         # verify
-        message.explanation = {'value': 'INPUT_REQUEST_MISMATCH', 'params': {'order': 2}}
+        message.explanation = {'value': 'MISMATCH'}
         self.assertEqualWithMessage(real_result, expected_result, msg=message)
 
     @devin_test_decorator
@@ -122,5 +122,5 @@ class TestUi(AssignmentTester):
         expected_result = ('Dan', 9, 40)
         real_result = user_interaction.register_user()
         # verify
-        message.explanation = {'value': 'INPUT_REQUEST_MISMATCH', 'params': {'order': 0}}
+        message.explanation = {'value': 'MISMATCH'}
         self.assertEqualWithMessage(real_result, expected_result, msg=message)
