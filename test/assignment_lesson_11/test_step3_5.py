@@ -6,9 +6,6 @@ from test_base.test_decorator import devin_test_decorator
 
 class TestUi(AssignmentTester):
 
-        def setUp(self):
-            self.board = [[None for _ in range(10)] for _ in range(10)]
-
         def tearDown(self):
             try:
                 del sys.modules['project.ui.user_interaction']
@@ -42,9 +39,9 @@ class TestUi(AssignmentTester):
             # test
             ######
             import project.board.board_functions as board_functions
-
+            board = [[None for _ in range(10)] for _ in range(10)]
             expected_result = True
-            real_result = board_functions.is_on_board(0, 9, self.board)
+            real_result = board_functions.is_on_board(0, 9, board)
             # verify
             message.explanation = {'value': 'CODE_MISMATCH'}
             self.assertEqualWithMessage(real_result, expected_result, msg=message)
@@ -54,9 +51,9 @@ class TestUi(AssignmentTester):
             # test
             ######
             import project.board.board_functions as board_functions
-
+            board = [[None for _ in range(10)] for _ in range(10)]
             expected_result = False
-            real_result = board_functions.is_on_board(0, -9, self.board)
+            real_result = board_functions.is_on_board(0, -9, board)
             # verify
             message.explanation = {'value': 'CODE_MISMATCH'}
             self.assertEqualWithMessage(real_result, expected_result, msg=message)
@@ -66,9 +63,9 @@ class TestUi(AssignmentTester):
             # test
             ######
             import project.board.board_functions as board_functions
-
+            board = [[None for _ in range(10)] for _ in range(10)]
             expected_result = False
-            real_result = board_functions.is_on_board(90, 5, self.board)
+            real_result = board_functions.is_on_board(90, 5, board)
             # verify
             message.explanation = {'value': 'CODE_MISMATCH'}
             self.assertEqualWithMessage(real_result, expected_result, msg=message)
@@ -78,9 +75,9 @@ class TestUi(AssignmentTester):
             # test
             ######
             import project.board.board_functions as board_functions
-
+            board = [[None for _ in range(10)] for _ in range(10)]
             expected_result = False
-            real_result = board_functions.is_on_board(10, 9, self.board)
+            real_result = board_functions.is_on_board(10, 9, board)
             # verify
             message.explanation = {'value': 'CODE_MISMATCH'}
             self.assertEqualWithMessage(real_result, expected_result, msg=message)
@@ -90,9 +87,9 @@ class TestUi(AssignmentTester):
             # test
             ######
             import project.board.board_functions as board_functions
-
+            board = [[None for _ in range(10)] for _ in range(10)]
             expected_result = True
-            real_result = board_functions.is_on_board(9, 9, self.board)
+            real_result = board_functions.is_on_board(9, 9, board)
             # verify
             message.explanation = {'value': 'CODE_MISMATCH'}
             self.assertEqualWithMessage(real_result, expected_result, msg=message)
@@ -102,9 +99,9 @@ class TestUi(AssignmentTester):
             # test
             ######
             import project.board.board_functions as board_functions
-
+            board = [[None for _ in range(10)] for _ in range(10)]
             expected_result = True
-            real_result = board_functions.safe_set_value(0, 5, 9, self.board)
+            real_result = board_functions.safe_set_value(0, 5, 9, board)
             # verify
             message.explanation = {'value': 'CODE_MISMATCH'}
             self.assertEqualWithMessage(real_result, expected_result, msg=message)
@@ -114,9 +111,10 @@ class TestUi(AssignmentTester):
             # test
             ######
             import project.board.board_functions as board_functions
-            board_functions.safe_set_value(0, 5, 9, self.board)
+            board = [[None for _ in range(10)] for _ in range(10)]
+            board_functions.safe_set_value(0, 5, 9, board)
             expected_result = 9
-            real_result = self.board[0][5]
+            real_result = board[0][5]
             # verify
             message.explanation = {'value': 'CODE_MISMATCH'}
             self.assertEqualWithMessage(real_result, expected_result, msg=message)
@@ -126,8 +124,9 @@ class TestUi(AssignmentTester):
             # test
             ######
             import project.board.board_functions as board_functions
+            board = [[None for _ in range(10)] for _ in range(10)]
             expected_result = False
-            real_result = board_functions.safe_set_value(0, 10, 9, self.board)
+            real_result = board_functions.safe_set_value(0, 10, 9, board)
             # verify
             message.explanation = {'value': 'CODE_MISMATCH'}
             self.assertEqualWithMessage(real_result, expected_result, msg=message)
