@@ -137,10 +137,10 @@ class TestStep5(AssignmentTester):
         import project.ui.terminal as test_file
         terminal = test_file.Terminal()
         terminal.init_game()
-
-        expected_result = "Your name is too short\nYour name is too short\nYour name is too short\nYour name is too short\n"
-        real_result = mock_stdout.getvalue()
         # verify
+        expected_result = "Your name is too short\nYour name is too short\nYour name is too short\nYour name is too short\n"
+
+        real_result = mock_stdout.getvalue()
         self.assertEqualWithMessage(real_result, expected_result, msg=message)
 
     @devin_test_decorator

@@ -23,6 +23,7 @@ class Message:
         self.file = file
         self.expectedResult = expected_result
         self.args = args
+        self.input_values = None
         self.realResult = real_result
         self.explanation = {'value': 'CODE_MISMATCH'}
         self.exception = exception
