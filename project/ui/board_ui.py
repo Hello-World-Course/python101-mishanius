@@ -10,3 +10,9 @@ def draw_board(board, k):
     for idx, row in enumerate(board):
         board_draw += f"{idx} |{'|'.join(map(lambda a: str(a), row))}|\n"
     return columns_names + board_draw
+
+
+def conver_coords(to_convert):
+    row = to_convert[:-1]
+    col = to_convert[-1]
+    return int(row), ord(col) - ord("A")
