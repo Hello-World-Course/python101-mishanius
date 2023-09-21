@@ -100,7 +100,7 @@ class TestStep5(AssignmentTester):
         board.set_flag(1, 1)
 
         expectedResult = True
-        realResult = board[1][1].is_flag
+        realResult = board[1][1].is_flaged()
         # verify
         self.assertEqualWithMessage(expectedResult, realResult, msg=message)
 
@@ -116,7 +116,7 @@ class TestStep5(AssignmentTester):
         board.click(1, 1)
 
         expectedResult = True
-        realResult = board[1][1].is_clicked
+        realResult = board[1][1].is_clicked()
         # verify
         self.assertEqualWithMessage(expectedResult, realResult, msg=message)
 
