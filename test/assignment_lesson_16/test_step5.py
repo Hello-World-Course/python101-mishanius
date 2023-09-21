@@ -81,7 +81,7 @@ class TestStep5(AssignmentTester):
         import project.model.mine as mine_file
         board = test_file.Board(6)
         mine = mine_file.Mine(1, 1)
-        board.board[1][1] = mine
+        board.inner_board[1][1] = mine
 
         expectedResult = mine
         realResult = board[1][1]
@@ -96,7 +96,7 @@ class TestStep5(AssignmentTester):
         import project.model.mine as mine_file
         board = test_file.Board(6)
         mine = mine_file.Mine(1, 1)
-        board.board[1][1] = mine
+        board.inner_board[1][1] = mine
         board.set_flag(1, 1)
 
         expectedResult = True
@@ -112,7 +112,7 @@ class TestStep5(AssignmentTester):
         import project.model.mine as mine_file
         board = test_file.Board(6)
         mine = mine_file.Mine(1, 1)
-        board.board[1][1] = mine
+        board.inner_board[1][1] = mine
         board.click(1, 1)
 
         expectedResult = True
@@ -130,7 +130,7 @@ class TestStep5(AssignmentTester):
         import project.model.mine as mine_file
         board = test_file.Board(6)
         mine = mine_file.Mine(1, 1)
-        board.board[1][1] = mine
+        board.inner_board[1][1] = mine
         board.click(1, 1)
         expectedResult = False
         realResult = board[0][0].is_clicked
