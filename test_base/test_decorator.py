@@ -19,7 +19,7 @@ def get_test_code(function):
     # Adjust indices to extract the desired portion without the comments themselves
     start_index = source.find('\n', start_index) + 1
     end_index = source.rfind('\n', start_index, end_index)
-    return source[start_index:end_index].strip()
+    return source[start_index:end_index]
 
 
 def get_input_stubbings(function):
