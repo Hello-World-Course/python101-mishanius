@@ -29,12 +29,13 @@ class TestStep5(AssignmentTester):
 
     @devin_test_decorator
     def test_mine(self, message):
+        # test
+        ######
         import project.model.mine as test_file
         mine = test_file.Mine(0,0)
-
         message.expectedResult = '*'
         message.realResult = mine.str_as_clicked()
-        message.explanation = {'value': 'INPUT_REQUEST_MISMATCH', 'params': {'order': 0}}
+        # verify
         self.assertEqualWithMessage(message.expectedResult, message.realResult, msg=message)
 
     @devin_test_decorator
@@ -44,13 +45,25 @@ class TestStep5(AssignmentTester):
 
         message.expectedResult = ' '
         message.realResult = empty_cell.str_as_clicked()
-        message.explanation = {'value': 'INPUT_REQUEST_MISMATCH', 'params': {'order': 0}}
         self.assertEqualWithMessage(message.expectedResult, message.realResult, msg=message)
 
         empty_cell.val = 6
         message.expectedResult = '6'
         message.realResult = empty_cell.str_as_clicked()
-        message.explanation = {'value': 'INPUT_REQUEST_MISMATCH', 'params': {'order': 1}}
+        self.assertEqualWithMessage(message.expectedResult, message.realResult, msg=message)
+
+    @devin_test_decorator
+    def test_empty_cell(self, message):
+        import project.model.empty_cell as test_file
+        empty_cell = test_file.EmptyCell(0, 0)
+
+        message.expectedResult = ' '
+        message.realResult = empty_cell.str_as_clicked()
+        self.assertEqualWithMessage(message.expectedResult, message.realResult, msg=message)
+
+        empty_cell.val = 6
+        message.expectedResult = '6'
+        message.realResult = empty_cell.str_as_clicked()
         self.assertEqualWithMessage(message.expectedResult, message.realResult, msg=message)
 
     @devin_test_decorator
@@ -60,7 +73,7 @@ class TestStep5(AssignmentTester):
 
         message.expectedResult = 6
         message.realResult = len(b)
-        message.explanation = {'value': 'INPUT_REQUEST_MISMATCH', 'params': {'order': 0}}
+        message.explanation = {'value': 'CODE_MISMATCH'}
         self.assertEqualWithMessage(message.expectedResult, message.realResult, msg=message)
 
     @devin_test_decorator
@@ -73,7 +86,7 @@ class TestStep5(AssignmentTester):
 
         message.expectedResult = mine
         message.realResult = board[1][1]
-        message.explanation = {'value': 'INPUT_REQUEST_MISMATCH', 'params': {'order': 0}}
+        message.explanation = {'value': 'CODE_MISMATCH'}
         self.assertEqualWithMessage(message.expectedResult, message.realResult, msg=message)
 
     @devin_test_decorator
@@ -87,7 +100,7 @@ class TestStep5(AssignmentTester):
 
         message.expectedResult = True
         message.realResult = board[1][1].is_flag
-        message.explanation = {'value': 'INPUT_REQUEST_MISMATCH', 'params': {'order': 0}}
+        message.explanation = {'value': 'CODE_MISMATCH'}
         self.assertEqualWithMessage(message.expectedResult, message.realResult, msg=message)
 
     @devin_test_decorator
@@ -101,12 +114,12 @@ class TestStep5(AssignmentTester):
 
         message.expectedResult = True
         message.realResult = board[1][1].is_clicked
-        message.explanation = {'value': 'INPUT_REQUEST_MISMATCH', 'params': {'order': 0}}
+        message.explanation = {'value': 'CODE_MISMATCH'}
         self.assertEqualWithMessage(message.expectedResult, message.realResult, msg=message)
 
         message.expectedResult = False
         message.realResult = board[0][0].is_clicked
-        message.explanation = {'value': 'INPUT_REQUEST_MISMATCH', 'params': {'order': 1}}
+        message.explanation = {'value': 'CODE_MISMATCH'}
         self.assertEqualWithMessage(message.expectedResult, message.realResult, msg=message)
 
     @devin_test_decorator
@@ -119,7 +132,7 @@ class TestStep5(AssignmentTester):
 
         message.expectedResult = "Your name is too short\nYour name is too short\nYour name is too short\nYour name is too short\n"
         message.realResult = mock_stdout.getvalue()
-        message.explanation = {'value': 'INPUT_REQUEST_MISMATCH', 'params': {'order': 0}}
+        message.explanation = {'value': 'CODE_MISMATCH'}
         self.assertEqualWithMessage(message.expectedResult, message.realResult, msg=message)
 
     @devin_test_decorator
@@ -133,5 +146,5 @@ class TestStep5(AssignmentTester):
 
         message.expectedResult = EMPTY_BOARD
         message.realResult = mock_stdout.getvalue()
-        message.explanation = {'value': 'INPUT_REQUEST_MISMATCH', 'params': {'order': 0}}
+        message.explanation = {'value': 'CODE_MISMATCH'}
         self.assertEqualWithMessage(message.expectedResult, message.realResult, msg=message)
