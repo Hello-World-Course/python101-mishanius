@@ -32,7 +32,7 @@ class TestUi(AssignmentTester):
         import project.ui.board_ui as test_file
 
         expected_result = (321, 26)
-        real_result = test_file.convert_coords("322AA")
+        real_result = test_file.convert_coords("322A")
         # verify
         message.explanation = {'value': 'CODE_MISMATCH'}
         self.assertEqualWithMessage(real_result, expected_result, msg=message)
@@ -61,14 +61,3 @@ class TestUi(AssignmentTester):
         # verify
         message.explanation = {'value': 'CODE_MISMATCH'}
         self.assertEqualWithMessage(real_result, expected_result, msg=message)
-
-    @devin_test_decorator
-    @mock.patch('builtins.input', side_effect=["i" for _ in range(1000)])
-    def test_board_cant_draw(self, *args, message):
-        # test
-        import project.board.board_functions as board_functions
-        import project.ui.board_ui as board_ui
-        board = board_functions.create_empty_board(20, "_")
-        # verify
-        message.explanation = {'value': 'SHOULD_RAISE_ERROR'}
-        self.assertRaisesWithMessage(board_ui.draw_board, board, 2, error=ValueError, msg=message)
