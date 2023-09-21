@@ -33,10 +33,10 @@ class TestStep5(AssignmentTester):
         ######
         import project.model.mine as test_file
         mine = test_file.Mine(0, 0)
-        expectedResult = '*'
-        realResult = mine.str_as_clicked()
+        expected_result = '*'
+        real_result = mine.str_as_clicked()
         # verify
-        self.assertEqualWithMessage(expectedResult, realResult, msg=message)
+        self.assertEqualWithMessage(real_result, expected_result, msg=message)
 
     @devin_test_decorator
     def test_empty_cell(self, message):
@@ -44,10 +44,10 @@ class TestStep5(AssignmentTester):
         ######
         import project.model.empty_cell as test_file
         empty_cell = test_file.EmptyCell(0, 0)
-        expectedResult = ' '
-        realResult = empty_cell.str_as_clicked()
+        expected_result = ' '
+        real_result = empty_cell.str_as_clicked()
         # verify
-        self.assertEqualWithMessage(expectedResult, realResult, msg=message)
+        self.assertEqualWithMessage(real_result, expected_result, msg=message)
 
     @devin_test_decorator
     def test_empty_cell_second(self, message):
@@ -56,10 +56,10 @@ class TestStep5(AssignmentTester):
         import project.model.empty_cell as test_file
         empty_cell = test_file.EmptyCell(0, 0)
         empty_cell.val = 6
-        expectedResult = '6'
-        realResult = empty_cell.str_as_clicked()
+        expected_result = '6'
+        real_result = empty_cell.str_as_clicked()
         # verify
-        self.assertEqualWithMessage(expectedResult, realResult, msg=message)
+        self.assertEqualWithMessage(real_result, expected_result, msg=message)
 
     @devin_test_decorator
     def test_board_length(self, message):
@@ -68,10 +68,10 @@ class TestStep5(AssignmentTester):
         import project.model.board as test_file
         b = test_file.Board(6)
 
-        expectedResult = 6
-        realResult = len(b)
+        expected_result = 6
+        real_result = len(b)
         # verify
-        self.assertEqualWithMessage(expectedResult, realResult, msg=message)
+        self.assertEqualWithMessage(real_result, expected_result, msg=message)
 
     @devin_test_decorator
     def test_board_get_item(self, message):
@@ -83,10 +83,10 @@ class TestStep5(AssignmentTester):
         mine = mine_file.Mine(1, 1)
         board.inner_board[1][1] = mine
 
-        expectedResult = mine
-        realResult = board[1][1]
+        expected_result = mine
+        real_result = board[1][1]
         # verify
-        self.assertEqualWithMessage(expectedResult, realResult, msg=message)
+        self.assertEqualWithMessage(real_result, expected_result, msg=message)
 
     @devin_test_decorator
     def test_board_set_flag(self, message):
@@ -99,10 +99,10 @@ class TestStep5(AssignmentTester):
         board.inner_board[1][1] = mine
         board.set_flag(1, 1)
 
-        expectedResult = True
-        realResult = board[1][1].is_flaged()
+        expected_result = True
+        real_result = board[1][1].is_flaged()
         # verify
-        self.assertEqualWithMessage(expectedResult, realResult, msg=message)
+        self.assertEqualWithMessage(real_result, expected_result, msg=message)
 
     @devin_test_decorator
     def test_board_click(self, message):
@@ -115,10 +115,10 @@ class TestStep5(AssignmentTester):
         board.inner_board[1][1] = mine
         board.click(1, 1)
 
-        expectedResult = True
-        realResult = board[1][1].is_clicked()
+        expected_result = True
+        real_result = board[1][1].is_clicked()
         # verify
-        self.assertEqualWithMessage(expectedResult, realResult, msg=message)
+        self.assertEqualWithMessage(real_result, expected_result, msg=message)
 
 
 
@@ -132,10 +132,10 @@ class TestStep5(AssignmentTester):
         mine = mine_file.Mine(1, 1)
         board.inner_board[1][1] = mine
         board.click(1, 1)
-        expectedResult = False
-        realResult = board[0][0].is_clicked()
+        expected_result = False
+        real_result = board[0][0].is_clicked()
         # verify
-        self.assertEqualWithMessage(expectedResult, realResult, msg=message)
+        self.assertEqualWithMessage(real_result, expected_result, msg=message)
 
     @devin_test_decorator
     @mock.patch('sys.stdout', new_callable=io.StringIO)
@@ -147,10 +147,10 @@ class TestStep5(AssignmentTester):
         terminal = test_file.Terminal()
         terminal.init_game()
 
-        expectedResult = "Your name is too short\nYour name is too short\nYour name is too short\nYour name is too short\n"
-        realResult = mock_stdout.getvalue()
+        expected_result = "Your name is too short\nYour name is too short\nYour name is too short\nYour name is too short\n"
+        real_result = mock_stdout.getvalue()
         # verify
-        self.assertEqualWithMessage(expectedResult, realResult, msg=message)
+        self.assertEqualWithMessage(real_result, expected_result, msg=message)
 
     @devin_test_decorator
     @mock.patch('sys.stdout', new_callable=io.StringIO)
@@ -163,7 +163,7 @@ class TestStep5(AssignmentTester):
         terminal.init_game()
         terminal.draw()
 
-        expectedResult = EMPTY_BOARD
-        realResult = mock_stdout.getvalue()
+        expected_result = EMPTY_BOARD
+        real_result = mock_stdout.getvalue()
         # verify
-        self.assertEqualWithMessage(expectedResult, realResult, msg=message)
+        self.assertEqualWithMessage(real_result, expected_result, msg=message)
