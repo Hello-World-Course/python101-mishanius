@@ -31,7 +31,7 @@ class TestUi(AssignmentTester):
         # test
         import project.ui.board_ui as test_file
 
-        expected_result = (321, 26)
+        expected_result = (322, 26)
         real_result = test_file.convert_coords("322A")
         # verify
         message.explanation = {'value': 'CODE_MISMATCH'}
@@ -42,7 +42,7 @@ class TestUi(AssignmentTester):
     def test_coordinate_conversion_2(self, *args, message):
         # test
         import project.ui.board_ui as test_file
-        expected_result = (3, 0)
+        expected_result = (4, 0)
         real_result = test_file.convert_coords("4A")
         # verify
         message.explanation = {'value': 'CODE_MISMATCH'}
