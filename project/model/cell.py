@@ -23,3 +23,11 @@ class Cell:
 
     def str_as_clicked(self):
         raise NotImplementedError()
+
+    def __str__(self) -> str:
+        if self.is_clicked():
+            return self.str_as_clicked()
+        else:
+            return self.str_as_hidden()
+
+
