@@ -19,8 +19,8 @@ class TestUi(AssignmentTester):
         # test
         import project.board.board_functions as board_functions
 
-        expected_result = [[None for _ in range(2)] for _ in range(2)]
-        real_result = board_functions.create_empty_board(2, None)
+        expected_result = [["_" for _ in range(2)] for _ in range(2)]
+        real_result = board_functions.create_empty_board(2, "_")
         # verify
         message.explanation = {'value': 'CODE_MISMATCH'}
         self.assertEqualWithMessage(real_result, expected_result, msg=message)
@@ -54,7 +54,7 @@ class TestUi(AssignmentTester):
         # test
         import project.board.board_functions as board_functions
         import project.ui.board_ui as board_ui
-        board = board_functions.create_empty_board(2, None)
+        board = board_functions.create_empty_board(2, "_")
 
         expected_result = '   A B \n0 |_|_|\n1 |_|_|\n'
         real_result = board_ui.draw_board(board, 20)
@@ -68,7 +68,7 @@ class TestUi(AssignmentTester):
         # test
         import project.board.board_functions as board_functions
         import project.ui.board_ui as board_ui
-        board = board_functions.create_empty_board(20, None)
+        board = board_functions.create_empty_board(20, "_")
         # verify
         message.explanation = {'value': 'SHOULD_RAISE_ERROR'}
         self.assertRaisesWithMessage(board_ui.draw_board, board, 2, error=ValueError, msg=message)
