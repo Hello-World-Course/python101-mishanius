@@ -133,7 +133,7 @@ class TestStep5(AssignmentTester):
         board.inner_board[1][1] = mine
         board.click(1, 1)
         expectedResult = False
-        realResult = board[0][0].is_clicked
+        realResult = board[0][0].is_clicked()
         # verify
         self.assertEqualWithMessage(expectedResult, realResult, msg=message)
 

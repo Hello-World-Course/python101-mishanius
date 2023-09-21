@@ -1,13 +1,14 @@
 from project.board.board_functions import create_empty_board
+from project.model.empty_cell import EmptyCell
 
 
 class Board:
     def __init__(self, board_size) -> None:
         super().__init__()
-        self.inner_board = create_empty_board(board_size, None)
+        self.inner_board = create_empty_board(board_size, EmptyCell(0, 0))
 
     def __len__(self):
-        return 7
+        return len(self.inner_board)
 
     def __getitem__(self, key):
         return self.inner_board[key]
