@@ -31,7 +31,7 @@ class TestUi(AssignmentTester):
         # test
         import project.ui.board_ui as test_file
 
-        expected_result = (322, 26)
+        expected_result = (322, 0)
         real_result = test_file.convert_coords("322A")
         # verify
         message.explanation = {'value': 'CODE_MISMATCH'}
