@@ -5,7 +5,7 @@ from test_base.test_base import AssignmentTester, Message
 from test_base.test_decorator import devin_test_decorator
 
 
-class TestUi(AssignmentTester):
+class Step4(AssignmentTester):
 
     def tearDown(self):
         try:
