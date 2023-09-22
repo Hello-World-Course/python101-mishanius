@@ -30,7 +30,6 @@ class TestStep5(AssignmentTester):
     @devin_test_decorator
     def test_mine(self, message):
         # test
-
         import project.model.mine as test_file
         mine = test_file.Mine(0, 0)
         expected_result = '*'
@@ -41,7 +40,6 @@ class TestStep5(AssignmentTester):
     @devin_test_decorator
     def test_empty_cell(self, message):
         # test
-
         import project.model.empty_cell as test_file
         empty_cell = test_file.EmptyCell(0, 0)
         expected_result = ' '
@@ -52,7 +50,6 @@ class TestStep5(AssignmentTester):
     @devin_test_decorator
     def test_empty_cell_second(self, message):
         # test
-
         import project.model.empty_cell as test_file
         empty_cell = test_file.EmptyCell(0, 0)
         empty_cell.set_value(6)
@@ -64,7 +61,6 @@ class TestStep5(AssignmentTester):
     @devin_test_decorator
     def test_board_length(self, message):
         # test
-
         import project.model.board as test_file
         b = test_file.Board(6)
 
@@ -76,7 +72,6 @@ class TestStep5(AssignmentTester):
     @devin_test_decorator
     def test_board_get_item(self, message):
         # test
-
         import project.model.board as test_file
         import project.model.mine as mine_file
         board = test_file.Board(6)
@@ -91,7 +86,6 @@ class TestStep5(AssignmentTester):
     @devin_test_decorator
     def test_board_set_flag(self, message):
         # test
-
         import project.model.board as test_file
         import project.model.mine as mine_file
         board = test_file.Board(6)
@@ -107,7 +101,6 @@ class TestStep5(AssignmentTester):
     @devin_test_decorator
     def test_board_click(self, message):
         # test
-
         import project.model.board as test_file
         import project.model.mine as mine_file
         board = test_file.Board(6)
@@ -125,7 +118,6 @@ class TestStep5(AssignmentTester):
     @devin_test_decorator
     def test_board_not_click(self, message):
         # test
-
         import project.model.board as test_file
         import project.model.mine as mine_file
         board = test_file.Board(6)
@@ -142,7 +134,6 @@ class TestStep5(AssignmentTester):
     @mock.patch('builtins.input', side_effect=["f", "f", "f", "f", "Micael", "9", "40"])
     def test_terminal_init(self, mock_input, mock_stdout, message):
         # test
-
         import project.ui.terminal as test_file
         terminal = test_file.Terminal()
         terminal.init_game()
@@ -157,13 +148,12 @@ class TestStep5(AssignmentTester):
     @mock.patch('builtins.input', side_effect=["Micael", "9", "40"])
     def test_terminal_draw(self, mock_input, mock_stdout, message):
         # test
-
         import project.ui.terminal as test_file
         terminal = test_file.Terminal()
         terminal.init_game()
         terminal.draw()
-
+        # verify
         expected_result = EMPTY_BOARD
         real_result = mock_stdout.getvalue()
-        # verify
+
         self.assertEqualWithMessage(real_result, expected_result, msg=message)
