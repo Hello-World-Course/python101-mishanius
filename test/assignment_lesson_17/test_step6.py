@@ -94,13 +94,15 @@ class TestStep6(AssignmentTester):
         # test
         import project.model.board as test_file
         board = test_file.Board(10)
-        locations = board.generate_random_mines_locations(5)
 
-        # Verify mines are on board
         is_ok = True
-        for x, y in locations:
-            if not 0 <= x < 10 or not 0 <= y < 10:
-                is_ok = False
+        # run the test 100 times
+        for i in range(100):
+            locations = board.generate_random_mines_locations(5)
+            # check mines are on board
+            for x, y in locations:
+                if not 0 <= x < 10 or not 0 <= y < 10:
+                    is_ok = False
 
         real_result = is_ok
         # verify
@@ -110,11 +112,12 @@ class TestStep6(AssignmentTester):
     def test_set_mines(self, message):
         # test
         import project.model.board as test_file
+        from project.model.mine import Mine
         board = test_file.Board(4)
         board.generate_random_mines_locations = lambda a: [(1, 0), (3, 1)]
         board.set_mines(2)
 
-        from project.model.mine import Mine
+
         # verify mines at place
         message.explanation = {'value': 'NOT_A_MINE', 'params': {'location': [1, 0]}}
         self.assertEqualWithMessage(True, type(board[1][0]) == Mine, msg=message)
