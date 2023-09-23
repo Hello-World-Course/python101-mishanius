@@ -50,7 +50,7 @@ class TestStep6(AssignmentTester):
         self.assertEqualWithMessage(real_result, expected_result, msg=message)
 
     @devin_test_decorator
-    @mock.patch('builtins.input', side_effect=['Amit', '8', '10', 'help', 'click 3A', 'click 4a', 'flag 5A', 'exit'])
+    @mock.patch('builtins.input', side_effect=['Amit', '8', '10', 'help', 'click 3A', 'click 4A', 'flag 5A', 'exit'])
     def test_running_loop(self, mock_input, message):
         # test
         import project.ui.terminal as test_file
@@ -117,7 +117,7 @@ class TestStep6(AssignmentTester):
         board.generate_random_mines_locations = lambda a: [(1, 0), (3, 1)]
         board.set_mines(2)
         # check that the cell is really a mine
-        real_result = type(board[1][0]) == Mine
+        real_result = type(board[1][0]) == Mine and type(board[3][1]) == Mine
         # verify
         self.assertEqualWithMessage(real_result, True, msg=message)
 
@@ -125,7 +125,6 @@ class TestStep6(AssignmentTester):
     def test_set_mines_value(self, message):
         # test
         import project.model.board as test_file
-        from project.model.mine import Mine
         board = test_file.Board(4)
         board.generate_random_mines_locations = lambda a: [(1, 0), (3, 1)]
         board.set_mines(2)

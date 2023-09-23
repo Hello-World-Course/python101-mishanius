@@ -27,6 +27,7 @@ class Terminal:
             print("Failed to init game")
             return
         self.current_board = Board(self.board_size)
+        self.running_loop()
 
     def running_loop(self):
         while True:
@@ -45,11 +46,11 @@ class Terminal:
         }
 
     def click(self, *args):
-        row, col = convert_coords(args[0])
+        row, col = convert_coords(args[1])
         self.current_board[row][col].set_clicked()
 
     def flag(self, *args):
-        row, col = convert_coords(args[0])
+        row, col = convert_coords(args[1])
         self.current_board[row][col].set_flag()
 
     def exit(self, *args):
