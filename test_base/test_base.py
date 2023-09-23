@@ -24,7 +24,8 @@ class Message:
         self.expectedResult = expected_result
         self.args = args
         self.realResult = real_result
-        self.explanation = None
+        self.input_values = None
+        self.explanation = {'value': 'CODE_MISMATCH'}
         self.exception = exception
         self.test_code = test_code
 
