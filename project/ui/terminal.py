@@ -11,8 +11,7 @@ board recommendations:
 beginner: board size: 8, mines: 10
 intermediate: board size: 16, mines: 40
 expert: board size: 22, mines: 99
-----------------------------------------------------------------------------
-"""
+----------------------------------------------------------------------------"""
 
 class Terminal:
     def __init__(self) -> None:

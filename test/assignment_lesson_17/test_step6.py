@@ -27,22 +27,23 @@ class TestStep6(AssignmentTester):
 
     @devin_test_decorator
     def test_get_available_commands(self, message):
+        # test
         import project.ui.terminal as test_file
         terminal = test_file.Terminal()
         commands_dict = terminal.get_available_commands()
-        print(commands_dict)
         expected_result = ['click', 'flag', 'exit', 'help']
         real_result = list(commands_dict.keys())
-        message.explanation = {'value': 'MISMATCH'}
+        # verify
         self.assertEqualWithMessage(real_result, expected_result, msg=message)
 
     @devin_test_decorator
     @mock.patch('sys.stdout', new_callable=io.StringIO)
     def test_help_function(self, mock_stdout, message):
+        # test
         import project.ui.terminal as test_file
         terminal = test_file.Terminal()
         terminal.help()
-
+        # verify
         expected_result = HELP_TEXT
         real_result = mock_stdout.getvalue()
         message.explanation = {'value': 'OUTPUT_MISMATCH'}
@@ -53,8 +54,10 @@ class TestStep6(AssignmentTester):
         'Amit', '8', '10', 'help', 'click 3A', 'click 4a', 'flag 5A', 'exit'
     ])
     def test_running_loop(self, mock_input, message):
+        # test
         import project.ui.terminal as test_file
         terminal = test_file.Terminal()
+        # verify
         self.assertRaisesWithMessage(terminal.init_game, error=SystemExit, msg=message)
 
     @devin_test_decorator
