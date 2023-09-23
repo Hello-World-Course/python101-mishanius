@@ -1,6 +1,6 @@
 import random
 
-from project.board.board_functions import create_empty_board
+from project.board.board_functions import create_empty_board, is_on_board
 from project.model.empty_cell import EmptyCell
 from project.model.mine import Mine
 
@@ -34,7 +34,20 @@ class Board:
         cell_ids = random.sample(range(n * n), number_of_mines)
         return [(i // n, i % n) for i in cell_ids]
 
+    def safe_inc_value(self, x, y):
+        if is_on_board(x, y, self.inner_board):
+            current_val = self.inner_board[x][y].get_value()
+            self.inner_board[x][y].set_value(current_val + 1)
+
     def set_mines(self, number_of_mines):
         coordinates = self.generate_random_mines_locations(number_of_mines)
         for x, y in coordinates:
             self.inner_board[x][y] = Mine(x, y)
+            self.safe_inc_value(x, y - 1)
+            self.safe_inc_value(x - 1, y - 1)
+            self.safe_inc_value(x - 1, y)
+            self.safe_inc_value(x - 1, y + 1)
+            self.safe_inc_value(x, y + 1)
+            self.safe_inc_value(x + 1, y + 1)
+            self.safe_inc_value(x + 1, y)
+            self.safe_inc_value(x + 1, y - 1)
