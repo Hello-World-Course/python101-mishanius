@@ -2,12 +2,13 @@ import io
 import sys
 from unittest import mock
 
+from project.model.mine import Mine
 from test_base.test_base import AssignmentTester
 from test_base.test_decorator import devin_test_decorator
 
-EMPTY_BOARD = """   A B C D E F G H I 
-0 |_|_|_|_|_|_|_|_|_|
-1 |_|_|_|_|_|_|_|_|_|
+TEST_BOARD = """   A B C D E F G H I 
+0 |*|1|_|_|_|_|_|_|_|
+1 |1|1|_|_|_|_|_|_|_|
 2 |_|_|_|_|_|_|_|_|_|
 3 |_|_|_|_|_|_|_|_|_|
 4 |_|_|_|_|_|_|_|_|_|
@@ -113,8 +114,6 @@ class TestStep5(AssignmentTester):
         # verify
         self.assertEqualWithMessage(real_result, expected_result, msg=message)
 
-
-
     @devin_test_decorator
     def test_board_not_click(self, message):
         # test
@@ -164,9 +163,13 @@ class TestStep5(AssignmentTester):
         import project.ui.terminal as test_file
         terminal = test_file.Terminal()
         terminal.init_game()
+        terminal.current_board[0][0] = Mine(0, 0)
+        terminal.current_board[0][1].set_value(1)
+        terminal.current_board[1][0].set_value(1)
+        terminal.current_board[1][1].set_value(1)
         terminal.draw()
         # verify
-        expected_result = EMPTY_BOARD
+        expected_result = TEST_BOARD
         real_result = mock_stdout.getvalue()
 
         self.assertEqualWithMessage(real_result, expected_result, msg=message)
