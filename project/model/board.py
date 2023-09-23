@@ -36,7 +36,7 @@ class Board:
 
     def safe_inc_value(self, x, y):
         if is_on_board(x, y, self.inner_board):
-            current_val = self.inner_board[x][y].get_value()
+            current_val = 0 if self.inner_board[x][y].get_value() is None else self.inner_board[x][y].get_value()
             self.inner_board[x][y].set_value(current_val + 1)
 
     def set_mines(self, number_of_mines):
