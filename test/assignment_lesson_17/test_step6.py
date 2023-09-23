@@ -50,9 +50,7 @@ class TestStep6(AssignmentTester):
         self.assertEqualWithMessage(real_result, expected_result, msg=message)
 
     @devin_test_decorator
-    @mock.patch('builtins.input', side_effect=[
-        'Amit', '8', '10', 'help', 'click 3A', 'click 4a', 'flag 5A', 'exit'
-    ])
+    @mock.patch('builtins.input', side_effect=['Amit', '8', '10', 'help', 'click 3A', 'click 4a', 'flag 5A', 'exit'])
     def test_running_loop(self, mock_input, message):
         # test
         import project.ui.terminal as test_file
