@@ -14,4 +14,4 @@ class EmptyCell(Cell):
         return self.value
 
     def str_as_clicked(self):
-        return " " if self.value is None or self.value == 0 else self.value
+        return " " if self.value is None or self.value == 0 else str(self.value)

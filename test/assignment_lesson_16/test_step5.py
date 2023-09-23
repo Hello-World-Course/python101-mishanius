@@ -164,7 +164,7 @@ class TestStep5(AssignmentTester):
         terminal = test_file.Terminal()
         terminal.init_game()
         # verify
-        expected_result = "David you entered illegal board size\nFailed to init game\n"
+        expected_result = "David, you entered illegal board size\nFailed to init game\n"
         real_result = mock_stdout.getvalue()
         self.assertEqualWithMessage(real_result, expected_result, msg=message)
 
