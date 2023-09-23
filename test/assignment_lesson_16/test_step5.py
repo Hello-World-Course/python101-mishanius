@@ -131,15 +131,28 @@ class TestStep5(AssignmentTester):
 
     @devin_test_decorator
     @mock.patch('sys.stdout', new_callable=io.StringIO)
-    @mock.patch('builtins.input', side_effect=["f", "f", "f", "f", "Micael", "9", "40"])
+    @mock.patch('builtins.input', side_effect=["f", "9", "40"])
     def test_terminal_init(self, mock_input, mock_stdout, message):
         # test
         import project.ui.terminal as test_file
         terminal = test_file.Terminal()
         terminal.init_game()
         # verify
-        expected_result = "Your name is too short\nYour name is too short\nYour name is too short\nYour name is too short\n"
+        expected_result = "Your name is too short\nFailed to init game\n"
 
+        real_result = mock_stdout.getvalue()
+        self.assertEqualWithMessage(real_result, expected_result, msg=message)
+
+    @devin_test_decorator
+    @mock.patch('sys.stdout', new_callable=io.StringIO)
+    @mock.patch('builtins.input', side_effect=["David", "0", "40"])
+    def test_terminal_init(self, mock_input, mock_stdout, message):
+        # test
+        import project.ui.terminal as test_file
+        terminal = test_file.Terminal()
+        terminal.init_game()
+        # verify
+        expected_result = "David you entered illegal board size\nFailed to init game\n"
         real_result = mock_stdout.getvalue()
         self.assertEqualWithMessage(real_result, expected_result, msg=message)
 

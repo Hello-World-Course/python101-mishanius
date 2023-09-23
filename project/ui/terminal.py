@@ -13,6 +13,9 @@ class Terminal:
 
     def init_game(self):
         self.name, self.board_size, self.number_of_mines = register_user()
+        if not self.name or not self.board_size or not self.number_of_mines:
+            print("Failed to init game")
+            return
         self.current_board = Board(self.board_size)
 
     def _create_string(self):
