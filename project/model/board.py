@@ -5,7 +5,7 @@ from project.model.empty_cell import EmptyCell
 class Board:
     def __init__(self, board_size) -> None:
         super().__init__()
-        self.inner_board = create_empty_board(board_size, EmptyCell(0, 0))
+        self.inner_board = [[EmptyCell(row, col) for col, _ in enumerate(range(board_size))] for row, _ in enumerate(range(board_size))]
 
     def __len__(self):
         return len(self.inner_board)
