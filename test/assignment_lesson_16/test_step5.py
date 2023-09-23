@@ -67,7 +67,7 @@ class TestStep5(AssignmentTester):
         import project.model.empty_cell as test_file
         empty_cell = test_file.EmptyCell(0, 0)
         empty_cell.set_value(6)
-        expected_result = 6
+        expected_result = "6"
         real_result = empty_cell.str_as_clicked()
         # verify
         self.assertEqualWithMessage(real_result, expected_result, msg=message)
