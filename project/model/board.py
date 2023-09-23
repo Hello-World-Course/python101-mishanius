@@ -2,6 +2,7 @@ import random
 
 from project.board.board_functions import create_empty_board
 from project.model.empty_cell import EmptyCell
+from project.model.mine import Mine
 
 
 class Board:
@@ -32,3 +33,8 @@ class Board:
         n = self.board_size
         cell_ids = random.sample(range(n * n), number_of_mines)
         return [(i // n, i % n) for i in cell_ids]
+
+    def set_mines(self, number_of_mines):
+        coordinates = self.generate_random_mines_locations(number_of_mines)
+        for x, y in coordinates:
+            self.inner_board[x][y] = Mine(x, y)

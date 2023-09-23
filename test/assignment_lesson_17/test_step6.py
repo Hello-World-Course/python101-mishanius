@@ -85,7 +85,7 @@ class TestStep6(AssignmentTester):
         board = test_file.Board(10)
         locations = board.generate_random_mines_locations(5)
         locations2 = board.generate_random_mines_locations(5)
-        real_result = locations==locations2
+        real_result = locations == locations2
         # verify
         self.assertEqualWithMessage(real_result, False, msg=message)
 
@@ -116,31 +116,30 @@ class TestStep6(AssignmentTester):
         board = test_file.Board(4)
         board.generate_random_mines_locations = lambda a: [(1, 0), (3, 1)]
         board.set_mines(2)
+        # check that the cell is really a mine
+        real_result = type(board[1][0]) == Mine
+        # verify
+        self.assertEqualWithMessage(real_result, True, msg=message)
 
-
-        # verify mines at place
-        message.explanation = {'value': 'NOT_A_MINE', 'params': {'location': [1, 0]}}
-        self.assertEqualWithMessage(True, type(board[1][0]) == Mine, msg=message)
-        message.explanation = {'value': 'NOT_A_MINE', 'params': {'location': [3, 1]}}
-        self.assertEqualWithMessage(True, type(board[3][1]) == Mine, msg=message)
-
-        # verify mines at place
-        message.explanation = {'value': 'CELL_VALUE_IS_WRONG', 'params': {'location': [0, 0]}}
-        self.assertEqualWithMessage(board[0][0].get_value(), 1, msg=message)
-        message.explanation = {'value': 'CELL_VALUE_IS_WRONG', 'params': {'location': [0, 1]}}
-        self.assertEqualWithMessage(board[0][1].get_value(), 1, msg=message)
-        message.explanation = {'value': 'CELL_VALUE_IS_WRONG', 'params': {'location': [2, 0]}}
-        self.assertEqualWithMessage(board[2][0].get_value(), 2, msg=message)
-        message.explanation = {'value': 'CELL_VALUE_IS_WRONG', 'params': {'location': [1, 1]}}
-        self.assertEqualWithMessage(board[1][1].get_value(), 1, msg=message)
-        message.explanation = {'value': 'CELL_VALUE_IS_WRONG', 'params': {'location': [2, 1]}}
-        self.assertEqualWithMessage(board[2][1].get_value(), 2, msg=message)
-        message.explanation = {'value': 'CELL_VALUE_IS_WRONG', 'params': {'location': [3, 0]}}
-        self.assertEqualWithMessage(board[3][0].get_value(), 1, msg=message)
-        message.explanation = {'value': 'CELL_VALUE_IS_WRONG', 'params': {'location': [2, 2]}}
-        self.assertEqualWithMessage(board[2][2].get_value(), 1, msg=message)
-        message.explanation = {'value': 'CELL_VALUE_IS_WRONG', 'params': {'location': [3, 2]}}
-        self.assertEqualWithMessage(board[3][2].get_value(), 1, msg=message)
+    @devin_test_decorator
+    def test_set_mines_value(self, message):
+        # test
+        import project.model.board as test_file
+        from project.model.mine import Mine
+        board = test_file.Board(4)
+        board.generate_random_mines_locations = lambda a: [(1, 0), (3, 1)]
+        board.set_mines(2)
+        # check that the cell is really a mine
+        real_result = [board[0][0].get_value(),
+                       board[0][1].get_value(),
+                       board[2][0].get_value(),
+                       board[1][1].get_value(),
+                       board[2][1].get_value(),
+                       board[3][0].get_value(),
+                       board[2][2].get_value(),
+                       board[3][2].get_value()]
+        # verify
+        self.assertEqualWithMessage(real_result, [1, 1, 2, 1, 2, 1, 1, 1], msg=message)
 
     @devin_test_decorator
     def test_mines_are_random(self, message):
