@@ -59,32 +59,52 @@ class TestStep6(AssignmentTester):
         self.assertRaisesWithMessage(terminal.init_game, error=SystemExit, msg=message)
 
     @devin_test_decorator
-    def test_generate_random_mines_locations(self, message):
+    def test_generate_random_mines_locations_len(self, message):
+        # test
+        import project.model.board as test_file
+        board = test_file.Board(10)
+        locations = board.generate_random_mines_locations(5)
+        real_result = len(locations)
+        # verify
+        self.assertEqualWithMessage(real_result, 5, msg=message)
+
+    @devin_test_decorator
+    def test_generate_random_mines_locations_unique(self, message):
+        # test
+        import project.model.board as test_file
+        board = test_file.Board(10)
+        locations = board.generate_random_mines_locations(5)
+        real_result = len(set(locations))
+        # verify
+        self.assertEqualWithMessage(real_result, 5, msg=message)
+
+    @devin_test_decorator
+    def test_generate_random_mines_locations_random(self, message):
+        # test
+        import project.model.board as test_file
+        board = test_file.Board(10)
+        locations = board.generate_random_mines_locations(5)
+        locations2 = board.generate_random_mines_locations(5)
+        real_result = locations==locations2
+        # verify
+        self.assertEqualWithMessage(real_result, False, msg=message)
+
+    @devin_test_decorator
+    def test_generate_random_mines_locations_random(self, message):
         # test
         import project.model.board as test_file
         board = test_file.Board(10)
         locations = board.generate_random_mines_locations(5)
 
-        # verify len is 5
-        message.explanation = {'value': 'WRONG_NUMBER_OF_MINES'}
-        self.assertEqualWithMessage(5, len(locations), msg=message)
-
-        # Mines are unique
-        message.explanation = {'value': 'DUPLICATED_MINE_LOCATIONS'}
-        self.assertEqualWithMessage(5, len(set(locations)), msg=message)
-
-        # Mines are random
-        message.explanation = {'value': 'MINES_ARE_NOT_RANDOM'}
-        locations2 = board.generate_random_mines_locations(5)
-        self.assertEqualWithMessage(True, locations2 != locations, msg=message)
-
-        # Mines are on board
+        # Verify mines are on board
         is_ok = True
         for x, y in locations:
             if not 0 <= x < 10 or not 0 <= y < 10:
                 is_ok = False
-        message.explanation = {'value': 'MINES_ARE_OUT_OF_BOARD'}
-        self.assertEqualWithMessage(True, is_ok, msg=message)
+
+        real_result = is_ok
+        # verify
+        self.assertEqualWithMessage(real_result, True, msg=message)
 
     @devin_test_decorator
     def test_set_mines(self, message):
