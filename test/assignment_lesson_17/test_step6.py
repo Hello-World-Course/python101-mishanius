@@ -128,7 +128,7 @@ class TestStep6(AssignmentTester):
         board = test_file.Board(4)
         board.generate_random_mines_locations = lambda a: [(1, 0), (3, 1)]
         board.set_mines(2)
-        # check that the cell is really a mine
+        # check that neighbor cells got a value
         real_result = [board[0][0].get_value(),
                        board[0][1].get_value(),
                        board[2][0].get_value(),
