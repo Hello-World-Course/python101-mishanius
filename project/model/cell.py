@@ -19,7 +19,7 @@ class Cell:
         return self.flag
 
     def str_as_hidden(self):
-        return "F" if not self.is_flaged() else "_"
+        return "F" if self.is_flaged() else "_"
 
     def str_as_clicked(self):
         raise NotImplementedError()
