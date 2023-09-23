@@ -34,7 +34,7 @@ class TestStep6(AssignmentTester):
         expected_result = ['click', 'flag', 'exit', 'help']
         real_result = list(commands_dict.keys())
         message.explanation = {'value': 'MISMATCH'}
-        self.assertEqualWithMessage(expected_result, real_result, msg=message)
+        self.assertEqualWithMessage(real_result, expected_result, msg=message)
 
     @devin_test_decorator
     @mock.patch('sys.stdout', new_callable=io.StringIO)
@@ -43,10 +43,10 @@ class TestStep6(AssignmentTester):
         terminal = test_file.Terminal()
         terminal.help()
 
-        message.expectedResult = HELP_TEXT
-        message.realResult = mock_stdout.getvalue()
+        expected_result = HELP_TEXT
+        real_result = mock_stdout.getvalue()
         message.explanation = {'value': 'OUTPUT_MISMATCH'}
-        self.assertEqualWithMessage(message.expectedResult, message.realResult, msg=message)
+        self.assertEqualWithMessage(real_result, expected_result, msg=message)
 
     @devin_test_decorator
     @mock.patch('builtins.input', side_effect=[
@@ -142,4 +142,4 @@ class TestStep6(AssignmentTester):
         expected_result = True
         real_result = mine_locations_second != mine_locations_first
         message.explanation = {'value': 'MINES_NOT_RANDOM'}
-        self.assertEqualWithMessage(expected_result, real_result, msg=message)
+        self.assertEqualWithMessage(real_result, expected_result, msg=message)
