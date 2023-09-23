@@ -18,3 +18,8 @@ class Board:
 
     def click(self, x, y):
         self.inner_board[x][y].set_clicked()
+
+    def reveal_all(self):
+        for i in self.inner_board:
+            for j in i:
+                j.set_clicked()

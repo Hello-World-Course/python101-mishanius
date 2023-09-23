@@ -19,6 +19,19 @@ TEST_BOARD = """   A B C D E F G H I
 
 """
 
+HIDDEN_BOARD = """   A B C D E F G H I 
+0 |_|_|_|_|_|_|_|_|_|
+1 |_|_|_|_|_|_|_|_|_|
+2 |_|_|_|_|_|_|_|_|_|
+3 |_|_|_|_|_|_|_|_|_|
+4 |_|_|_|_|_|_|_|_|_|
+5 |_|_|_|_|_|_|_|_|_|
+6 |_|_|_|_|_|_|_|_|_|
+7 |_|_|_|_|_|_|_|_|_|
+8 |_|_|_|_|_|_|_|_|_|
+
+"""
+
 
 class TestStep5(AssignmentTester):
 
@@ -167,6 +180,26 @@ class TestStep5(AssignmentTester):
         terminal.current_board[0][1].set_value(1)
         terminal.current_board[1][0].set_value(1)
         terminal.current_board[1][1].set_value(1)
+        terminal.draw()
+        # verify
+        expected_result = HIDDEN_BOARD
+        real_result = mock_stdout.getvalue()
+
+        self.assertEqualWithMessage(real_result, expected_result, msg=message)
+
+    @devin_test_decorator
+    @mock.patch('sys.stdout', new_callable=io.StringIO)
+    @mock.patch('builtins.input', side_effect=["Micael", "9", "40"])
+    def test_terminal_draw_reveal_all(self, mock_input, mock_stdout, message):
+        # test
+        import project.ui.terminal as test_file
+        terminal = test_file.Terminal()
+        terminal.init_game()
+        terminal.current_board[0][0] = Mine(0, 0)
+        terminal.current_board[0][1].set_value(1)
+        terminal.current_board[1][0].set_value(1)
+        terminal.current_board[1][1].set_value(1)
+        terminal.current_board.reveal_all()
         terminal.draw()
         # verify
         expected_result = TEST_BOARD
