@@ -35,7 +35,7 @@ class Board:
         return [(i // n, i % n) for i in cell_ids]
 
     def safe_inc_value(self, x, y):
-        if is_on_board(x, y, self.inner_board):
+        if is_on_board(x, y, self.inner_board) and type(self.inner_board[x][y]) == EmptyCell:
             current_val = 0 if self.inner_board[x][y].get_value() is None else self.inner_board[x][y].get_value()
             self.inner_board[x][y].set_value(current_val + 1)
 
