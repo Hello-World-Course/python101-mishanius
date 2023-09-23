@@ -100,5 +100,7 @@ class AssignmentTester(unittest.TestCase):
                               msg=message)
 
     def assertRaisesWithMessage(self, func, *args, error, msg: Message):
+        msg.realResult = f"Didn't get {error}"
+        msg.expectedResult = f"Should get error (exit is also an error): {error}"
         with self.assertRaises(error, msg=msg):
             func(*args)
