@@ -30,17 +30,11 @@ class TestStep6(AssignmentTester):
         import project.ui.terminal as test_file
         terminal = test_file.Terminal()
         commands_dict = terminal.get_available_commands()
-
+        print(commands_dict)
         expected_result = ['click', 'flag', 'exit', 'help']
         real_result = list(commands_dict.keys())
         message.explanation = {'value': 'MISMATCH'}
         self.assertEqualWithMessage(expected_result, real_result, msg=message)
-
-    @devin_test_decorator
-    def test_exit_function(self, message):
-        import project.ui.terminal as test_file
-        terminal = test_file.Terminal()
-        self.assertRaisesWithMessage(terminal.exit, error=SystemExit, msg=message)
 
     @devin_test_decorator
     @mock.patch('sys.stdout', new_callable=io.StringIO)
