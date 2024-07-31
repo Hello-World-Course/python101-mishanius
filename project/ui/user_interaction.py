@@ -18,4 +18,4 @@ else:
             print(f"{name}, you have entered illegal number of mines")
         else:
             number_of_mines = number_of_mines_temp
-            print(f"{name}, the board size is: {board_size}, number of mines is: {number_of_mines}. ENJOY!")
+            print(f"{name}, the bohard size is: {board_size}, number of mines is: {number_of_mines}. ENJOY!")
